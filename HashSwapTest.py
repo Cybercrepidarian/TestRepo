@@ -17,14 +17,17 @@ print ("Hashes from readlines:")
 for hash in hashes:
     print(hash)
 
+wait_time = 15
 url = 'https://www.virustotal.com/vtapi/v2/file/report'
 params = {'apikey': apikey, 'resource': md5}
 response = requests.get(url, params=params)
 dictresponse = response.json()
 
 print ('This is the API key: ' + apikey)
-print (params)
 #print(response.json())
 #print(json.loads(response.json()))
 for key in ("md5","sha1","sha256"):
     print("The " + key + " hash is " + dictresponse[key])
+
+
+print(response.status_code)
